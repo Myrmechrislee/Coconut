@@ -15,7 +15,7 @@ export class CoconutServer {
 
         this.UDP_Server.on('message', function(msg, rinfo){
             self.Handlers.forEach(item => {
-
+                item(JSON.parse(msg.toString('utf8')), new Response(self.UDP_Server, rinfo), undefined);
             });
         });
     }
